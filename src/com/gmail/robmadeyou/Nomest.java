@@ -1,54 +1,18 @@
 package com.gmail.robmadeyou;
 
-import com.abereth.draw.Color;
-import com.abereth.draw.shapes.Square;
-import com.abereth.game.Game;
-import com.abereth.game.View;
-import com.abereth.gui.Text;
-import com.abereth.gui.TextInput;
-import com.abereth.input.Keyboard;
-import com.abereth.input.Mouse;
 
+import com.abereth.game.Game;
 
 /**
  * Created by exfos on 23/01/15.
  */
-public class Nomest extends View
+public class Nomest
 {
-	public Nomest( Game game )
-	{
-		super( game );
-	}
 
 	public static void main( String[] args )
 	{
 		Game g = new Game( );
-		g.addView( new Nomest( g ) );
+		g.addView( new WelcomeView( g ) );
 		g.Start();
-	}
-
-	private Text text;
-
-	@Override
-	public void Initialize()
-	{
-		super.Initialize();
-		TextInput input = new TextInput( 100, 100, 200, 40 );
-		input.getText().setSize( 25 );
-		input.setColor( Color.RED );
-		add( input );
-		text = new Text( "HQWASD QWDEASX&!4asd&!1asdwdqdQWDQWD", 50, 50 );
-		text.setColor( Color.RED );
-		Square s = new Square( 40, 40, 40, 40 );
-		add( s );
-		add( text );
-		s.setLayer( 1 );
-	}
-
-	@Override
-	public void update( int delta )
-	{
-		text.setDrawX( Mouse.getX() + 20 );
-		text.setDrawY( Mouse.getY() );
 	}
 }
