@@ -5,6 +5,7 @@ import com.abereth.draw.shapes.Square;
 import com.abereth.game.Game;
 import com.abereth.game.View;
 import com.abereth.gui.Text;
+import com.abereth.gui.TextInput;
 import com.abereth.input.Keyboard;
 import com.abereth.input.Mouse;
 
@@ -32,6 +33,10 @@ public class Nomest extends View
 	public void Initialize()
 	{
 		super.Initialize();
+		TextInput input = new TextInput( 100, 100, 200, 40 );
+		input.getText().setSize( 25 );
+		input.setColor( Color.RED );
+		add( input );
 		text = new Text( "HQWASD QWDEASX&!4asd&!1asdwdqdQWDQWD", 50, 50 );
 		text.setColor( Color.RED );
 		Square s = new Square( 40, 40, 40, 40 );
