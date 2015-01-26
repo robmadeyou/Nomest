@@ -44,6 +44,17 @@ public class TextScrollView extends View
 		getGame().GetEventManager().CreateNewLogger( "FPS: ", 1000 );
 	}
 
+	public void writeCenteredText( String text )
+	{
+		int charsLeft = this.textLimit - text.length();
+		String str = "";
+		for( int i = 0; i < charsLeft / 2; i++ )
+		{
+			str += " ";
+		}
+		write( str + text + str );
+	}
+
 	public void write( String text, String color )
 	{
 		this.write( color + text );

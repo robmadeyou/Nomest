@@ -1,7 +1,6 @@
 package com.gmail.robmadeyou;
 
 import com.abereth.game.Game;
-import com.abereth.gui.text.Text;
 
 /**
  * Created by exfos on 25/01/15.
@@ -17,6 +16,7 @@ public class WelcomeView extends TextScrollView
 	public void Initialize()
 	{
 		super.Initialize();
-		write( "Hello\nThis is your life now!AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", Text.PINK );
+		writeCenteredText( "Hello" );
+		writeCenteredText( "I hope you're ready, we have a long adventure ahead of us..." );
 	}
 }
