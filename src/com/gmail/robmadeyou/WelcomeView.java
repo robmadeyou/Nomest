@@ -1,5 +1,7 @@
 package com.gmail.robmadeyou;
 
+import com.abereth.event.EventComplete;
+import com.abereth.event.view.transitions.FadeTransition;
 import com.abereth.game.Game;
 
 /**
@@ -18,5 +20,13 @@ public class WelcomeView extends TextScrollView
 		super.Initialize();
 		writeCenteredText( "Hello" );
 		writeCenteredText( "I hope you're ready, we have a long adventure ahead of us..." );
+		scrollTextUp( 200 ).onComplete( new EventComplete<TextScrollView>()
+		{
+			@Override
+			public void onDone( TextScrollView object )
+			{
+				object.getGame().ChangeView( new GameView( object.getGame() ), new FadeTransition( 10000 ) );
+			}
+		} );
 	}
 }

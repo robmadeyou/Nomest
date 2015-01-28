@@ -2,6 +2,7 @@ package com.gmail.robmadeyou;
 
 import com.abereth.G;
 import com.abereth.draw.Color;
+import com.abereth.event.TimedEvent;
 import com.abereth.game.Game;
 import com.abereth.game.View;
 import com.abereth.gui.text.Text;
@@ -9,6 +10,7 @@ import com.abereth.gui.text.TextInputSingleLine;
 import com.abereth.helpers.StringTools;
 import com.abereth.input.Keyboard;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -55,6 +57,39 @@ public class TextScrollView extends View
 		write( str + text + str );
 	}
 
+	public TimedEvent<TextScrollView> scrollTextUp( final long delay )
+	{
+		TimedEvent<TextScrollView> event = new TimedEvent<TextScrollView>()
+		{
+			private int left = 0;
+			@Override
+			public void EachInterval( int delta, TextScrollView view )
+			{
+				if( left != 0 )
+				{
+					view.write( "" );
+					left--;
+				}
+			}
+
+			@Override
+			public void init( TextScrollView textScrollView )
+			{
+				super.init( textScrollView );
+				SetInterval( delay );
+				left = textScrollView.getTextGrid().size();
+			}
+
+			@Override
+			public boolean isDone( TextScrollView view )
+			{
+				return left == 0;
+			}
+		};
+		GetEventManager().add( event , false );
+		return event;
+	}
+
 	public void write( String text, String color )
 	{
 		this.write( color + text );
@@ -97,6 +132,11 @@ public class TextScrollView extends View
 				}
 			}
 		}
+	}
+
+	public ArrayList<Text> getTextGrid()
+	{
+		return this.textGrid;
 	}
 
 	@Override
