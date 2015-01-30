@@ -1,8 +1,15 @@
 package com.gmail.robmadeyou.leveleditor;
 
-/**
- * Created by exfos on 29/01/15.
- */
+import com.abereth.game.Game;
+
 public class Editor
 {
+
+	public static void main( String[] args )
+	{
+		Game g = new Game();
+		g.addView( new AreaEditView( g ) );
+		g.Start();
+	}
+
 }

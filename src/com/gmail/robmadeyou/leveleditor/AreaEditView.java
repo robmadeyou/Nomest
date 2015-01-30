@@ -1,8 +1,20 @@
 package com.gmail.robmadeyou.leveleditor;
 
-/**
- * Created by exfos on 29/01/15.
- */
-public class AreaEditView
+import com.abereth.game.Game;
+import com.abereth.game.View;
+
+public class AreaEditView extends View
 {
+
+	public AreaEditView( Game game )
+	{
+		super( game );
+	}
+
+	@Override
+	public void update( int delta )
+	{
+
+
+	}
 }
