@@ -10,7 +10,6 @@ import com.abereth.gui.text.TextInputSingleLine;
 import com.abereth.helpers.StringTools;
 import com.abereth.input.Keyboard;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -57,13 +56,22 @@ public class TextScrollView extends View
 		write( str + text + str );
 	}
 
+	/**
+	 * Returns the number of lines available to print on the screen
+	 * @return Integer
+	 */
+	public int getLineAmount()
+	{
+		return this.textGrid.size();
+	}
+
 	public TimedEvent<TextScrollView> scrollTextUp( final long delay )
 	{
 		TimedEvent<TextScrollView> event = new TimedEvent<TextScrollView>()
 		{
 			private int left = 0;
 			@Override
-			public void EachInterval( int delta, TextScrollView view )
+			public void eachInterval(int delta, TextScrollView view)
 			{
 				if( left != 0 )
 				{
@@ -76,7 +84,7 @@ public class TextScrollView extends View
 			public void init( TextScrollView textScrollView )
 			{
 				super.init( textScrollView );
-				SetInterval( delay );
+				setInterval(delay);
 				left = textScrollView.getTextGrid().size();
 			}
 
@@ -86,7 +94,7 @@ public class TextScrollView extends View
 				return left == 0;
 			}
 		};
-		GetEventManager().add( event , false );
+		getEventManager().add( event , false );
 		return event;
 	}
 
