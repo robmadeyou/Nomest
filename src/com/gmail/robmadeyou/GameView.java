@@ -11,4 +11,11 @@ public class GameView extends TextScrollView
 	{
 		super( game );
 	}
+
+	@Override
+	public void initialize() {
+		super.initialize();
+
+		writeCenteredText( "Looks like you've had  the misfortune to venture here... Let's get along with it then, shall we?" );
+	}
 }

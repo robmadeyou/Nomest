@@ -20,6 +20,8 @@ public class TextScrollView extends View
 	private ArrayList<Text> textGrid = new ArrayList<>( );
 	private TextInputSingleLine input;
 	private int textLimit;
+
+	public int LETTER_SIZE = 8;
 	public TextScrollView( Game game )
 	{
 		super( game );
@@ -29,15 +31,16 @@ public class TextScrollView extends View
 	public void initialize()
 	{
 		super.initialize();
-		this.input = new TextInputSingleLine( 0, G.HEIGHT - 8, G.WIDTH, 8 );
-		textLimit = G.WIDTH / 8;
+		this.input = new TextInputSingleLine( 0, G.HEIGHT - this.LETTER_SIZE, G.WIDTH, this.LETTER_SIZE );
+		textLimit = G.WIDTH / this.LETTER_SIZE;
 		input.setIsAlwaysSelected( true );
 		input.getText().setCharacterLimit( textLimit );
 		add( input );
 		input.setColor( Color.BLACK );
-		for( int i = 0; i < G.HEIGHT / 12; i++ )
+		for( int i = 0; i < G.HEIGHT / ( this.LETTER_SIZE + 4 ); i++ )
 		{
-			Text t = new Text( "", 2, 12 * i, 0, 0 );
+			Text t = new Text( "", 2, ( this.LETTER_SIZE + 4 ) * i, 0, 0 );
+			t.setSize( this.LETTER_SIZE );
 			t.setCharacterLimit( textLimit );
 			add( t );
 			textGrid.add( t );
