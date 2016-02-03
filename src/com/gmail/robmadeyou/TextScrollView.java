@@ -65,7 +65,7 @@ public class TextScrollView extends View
 		return this.textGrid.size();
 	}
 
-	public TimedEvent<TextScrollView> scrollTextUp( final long delay )
+	public TimedEvent<TextScrollView> scrollUp( final long delay, final int amount )
 	{
 		TimedEvent<TextScrollView> event = new TimedEvent<TextScrollView>()
 		{
@@ -85,7 +85,7 @@ public class TextScrollView extends View
 			{
 				super.init( textScrollView );
 				setInterval(delay);
-				left = textScrollView.getTextGrid().size();
+				left = amount;
 			}
 
 			@Override
@@ -96,6 +96,11 @@ public class TextScrollView extends View
 		};
 		getEventManager().add( event , false );
 		return event;
+	}
+
+	public TimedEvent<TextScrollView> clearScreenScrollUp( long delay )
+	{
+		return scrollUp( delay, getLineAmount() );
 	}
 
 	public void write( String text, String color )

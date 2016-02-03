@@ -1,7 +1,9 @@
 package com.gmail.robmadeyou;
 
+import com.abereth.event.view.ViewKeyPressEvent;
 import com.abereth.event.view.transitions.FadeTransition;
 import com.abereth.game.Game;
+import com.abereth.input.Keyboard;
 
 /**
  * Created by exfos on 25/01/15.
@@ -19,11 +21,15 @@ public class WelcomeView extends TextScrollView
 		super.Initialize();
 		writeCenteredText( "Hello" );
 		writeCenteredText( "I hope you're ready, we have a long adventure ahead of us..." );
-		scrollTextUp( getLineAmount() / 2 ).onComplete( ( object ) ->
+		scrollUp(200, getLineAmount() / 2).onComplete( ( TextScrollView object ) ->
 		{
-			writeCenteredText( "Press any key to continue" );
-			getEventManager().add();
-			object.getGame().ChangeView( new GameView( object.getGame() ), new FadeTransition( 10000 ) );
+			writeCenteredText( "Press space to continue..." );
+			object.getEventManager().add(new ViewKeyPressEvent( Keyboard.Key.Space ) {
+				@Override
+				public void onKeyPress( Game game, Keyboard.Key key ) {
+					object.getGame().ChangeView( new GameView( object.getGame() ), new FadeTransition( 10000 ) );
+				}
+			}, false );
 		} );
 	}
 }
