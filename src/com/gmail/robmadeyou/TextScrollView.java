@@ -26,9 +26,9 @@ public class TextScrollView extends View
 	}
 
 	@Override
-	public void Initialize()
+	public void initialize()
 	{
-		super.Initialize();
+		super.initialize();
 		this.input = new TextInputSingleLine( 0, G.HEIGHT - 8, G.WIDTH, 8 );
 		textLimit = G.WIDTH / 8;
 		input.setIsAlwaysSelected( true );

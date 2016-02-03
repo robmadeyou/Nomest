@@ -3,6 +3,7 @@ package com.gmail.robmadeyou;
 import com.abereth.event.view.ViewKeyPressEvent;
 import com.abereth.event.view.transitions.FadeTransition;
 import com.abereth.game.Game;
+import com.abereth.game.View;
 import com.abereth.input.Keyboard;
 
 /**
@@ -16,17 +17,17 @@ public class WelcomeView extends TextScrollView
 	}
 
 	@Override
-	public void Initialize()
+	public void initialize()
 	{
-		super.Initialize();
+		super.initialize();
 		writeCenteredText( "Hello" );
 		writeCenteredText( "I hope you're ready, we have a long adventure ahead of us..." );
 		scrollUp(200, getLineAmount() / 2).onComplete( ( TextScrollView object ) ->
 		{
 			writeCenteredText( "Press space to continue..." );
-			object.getEventManager().add(new ViewKeyPressEvent( Keyboard.Key.Space ) {
+			getEventManager().add(new ViewKeyPressEvent( Keyboard.Key.Space ) {
 				@Override
-				public void onKeyPress( Game game, Keyboard.Key key ) {
+				public void onKeyPress( View game, Keyboard.Key key ) {
 					object.getGame().ChangeView( new GameView( object.getGame() ), new FadeTransition( 10000 ) );
 				}
 			}, false );
