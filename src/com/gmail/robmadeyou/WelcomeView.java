@@ -22,9 +22,9 @@ public class WelcomeView extends TextScrollView
 		super.initialize();
 		writeCenteredText( "Hello" );
 		writeCenteredText( "I hope you're ready, we have a long adventure ahead of us..." );
-		scrollUp(200, getLineAmount() / 2).onComplete( ( TextScrollView object ) ->
+		scrollUp( 100, getLineAmount() / 2).onComplete( ( TextScrollView object ) ->
 		{
-			writeCenteredText( "Press space to continue..." );
+			writeCenteredText( "Press space to continue...\n" );
 			getEventManager().add(new ViewKeyPressEvent( Keyboard.Key.Space ) {
 				@Override
 				public void onKeyPress( View game, Keyboard.Key key ) {

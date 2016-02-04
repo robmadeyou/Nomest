@@ -21,7 +21,7 @@ public class TextScrollView extends View
 	private TextInputSingleLine input;
 	private int textLimit;
 
-	public int LETTER_SIZE = 8;
+	public int LETTER_SIZE = Nomest.LETTER_SIZE;
 	public TextScrollView( Game game )
 	{
 		super( game );
