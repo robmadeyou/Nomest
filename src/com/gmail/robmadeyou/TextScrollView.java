@@ -9,6 +9,7 @@ import com.abereth.gui.text.Text;
 import com.abereth.gui.text.TextInputSingleLine;
 import com.abereth.helpers.StringTools;
 import com.abereth.input.Keyboard;
+import com.gmail.robmadeyou.text.BufferedLine;
 
 import java.util.ArrayList;
 
@@ -106,17 +107,17 @@ public class TextScrollView extends View
 		return scrollUp( delay, getLineAmount() );
 	}
 
-	public void write( String text, String color )
+	public BufferedLine write( String text, String color )
 	{
 		this.write( color + text );
 	}
 
-	public void write( String text )
+	public BufferedLine write( String text )
 	{
-		this.write( text, false );
+		this.write( new BufferedLine( text ), false );
 	}
 
-	private void write( String text, boolean parsed )
+	private void write( BufferedLine text, boolean parsed )
 	{
 		for( int i = 0; i < textGrid.size(); i++ )
 		{
