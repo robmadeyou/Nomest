@@ -107,17 +107,17 @@ public class TextScrollView extends View
 		return scrollUp( delay, getLineAmount() );
 	}
 
-	public BufferedLine write( String text, String color )
+	public void write( String text, String color )
 	{
 		this.write( color + text );
 	}
 
-	public BufferedLine write( String text )
+	public void write( String text )
 	{
-		this.write( new BufferedLine( text ), false );
+		this.write( text, false );
 	}
 
-	private void write( BufferedLine text, boolean parsed )
+	private void write( String text, boolean parsed )
 	{
 		for( int i = 0; i < textGrid.size(); i++ )
 		{
