@@ -2,6 +2,7 @@ package com.gmail.robmadeyou;
 
 import com.abereth.G;
 import com.abereth.draw.Color;
+import com.abereth.draw.TextureLoader;
 import com.abereth.draw.shapes.Square;
 import com.abereth.game.Game;
 import com.abereth.game.View;
@@ -94,8 +95,7 @@ public class GameView extends View
 					bodyFixture.setDensity( 1 );
 				}
 			} );
-			//box.setColor( Color.random() );
-			box.setColor( Color.random() );
+			box.setTexture( TextureLoader.createTexture( "Abereth/res/tiles/Stone.png" ) );
 			world.add( box );
 		}
 		if( Keyboard.isKeyDown( Keyboard.Key.Space ) )
@@ -114,8 +114,8 @@ public class GameView extends View
 		if( Mouse.isRightMouseDown() )
 		{
 			Square s = new Square( Mouse.getX(), Mouse.getY(), 50, 50 );
-			s.setLayer( 5 );
-			add( s );
+			s.setLayer(5);
+			add(s);
 		}
 	}
 }
