@@ -6,6 +6,7 @@ import com.abereth.draw.TextureLoader;
 import com.abereth.draw.shapes.Square;
 import com.abereth.game.Game;
 import com.abereth.game.View;
+import com.abereth.game.WorldView;
 import com.abereth.input.Keyboard;
 import com.abereth.input.Mouse;
 import com.abereth.objects.living.Physical;
@@ -21,7 +22,7 @@ import java.util.function.Consumer;
 /**
  * Created by exfos on 28/01/15.
  */
-public class GameView extends View
+public class GameView extends WorldView
 {
 	private World world;
 	private PhysicalBox box;
@@ -40,7 +41,7 @@ public class GameView extends View
 
 
 		this.world = new World();
-		this.SetWorld( world );
+		this.setWorld( world );
 		world.setGravity( new Vector2( 0, 16 ) );
 		this.box = new PhysicalBox( 60, 20, 50, 50 );
 		box.setColor( Color.BLUE );
@@ -96,7 +97,7 @@ public class GameView extends View
 				}
 			} );
 			box.setTexture( TextureLoader.createTexture( "Abereth/res/tiles/Stone.png" ) );
-			world.add( box );
+			world.add(box);
 		}
 		if( Keyboard.isKeyDown( Keyboard.Key.Space ) )
 		{
